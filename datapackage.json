@@ -37,13 +37,55 @@
           "type": "string",
           "dimension": false
         }, {
+          "name": "Substance",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+			      "enum": [
+              "Alcohol",
+              "Amphetamines",
+              "Barbiturates",
+              "Benzodiazepines",
+              "Cocaine",
+              "Cocaine/Crack",
+              "Crack",
+              "Hallucinogens: LSD, DMS, STP, etc",
+              "Heroin",
+              "Inhalants",
+              "Marijuana, Hashish, THC",
+              "Methamphetamines",
+              "Non-Prescriptive Methadone",
+              "Other",
+              "Other Opiates and Synthetics",
+              "Other Sedatives or Hypnotics",
+              "Other Stimulants",
+              "Over-the-Counter",
+              "PCP",
+              "Tobacco",
+              "Tranquilizers", 
+              "Total"
+		        ]
+			    }
+        }, {
           "name": "Measure Type",
           "type": "string",
-          "dimension": true
+          "dimension": true,
+          "constraints": {
+			      "enum": [
+		          "Number",
+		          "Rate", 	
+		          "Percent"
+		        ]
+			    }
         }, {
           "name": "Variable",
           "type": "string",
-          "dimension": true
+          "dimension": true, 
+          "constraints": {
+		        "enum": [
+              "Treatment Admissions"
+            ]
+			    }
         }, {
           "name": "Value",
           "type": "number",
@@ -56,27 +98,27 @@
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
-      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. The non-duplicative number of alcohol addiction treatment clients and marijuana addiction treatment clients are also reported. The non-duplicative counts are based on the zip code of the client receiving treatment. Data are reported annually.",
+      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. The non-duplicative number of alcohol addiction treatment clients and marijuana addiction treatment clients are also reported. Data are reported annually.",
       "type": "string"
     },
     "suppression": {
       "ckan_name": "Suppression",
-      "value": "",
+      "value": "Towns with less than 6 admissions are suppressed.",
       "type": "string"
     },
     "technical_notes": {
       "ckan_name": "Technical Notes",
-      "value": "Technical notes for advanced users",
+      "value": "",
       "type": "string"
     },
     "socrata": {
       "ckan_name": "Socrata",
-      "value": "True",,
+      "value": "True",
       "type": "string"
     },
     "socrata_url": {
       "ckan_name": "Socrata Dataset URL",
-      "value": "https://data.ct.gov/Health-and-Human-Services/Admissions-to-DMHAS-Addiction-Treatment-by-Town-Ye/erbt-mpgb",,
+      "value": "https://data.ct.gov/Health-and-Human-Services/Admissions-to-DMHAS-Addiction-Treatment-by-Town-Ye/erbt-mpgb",
       "type": "string"
     },
     "domain": {
@@ -102,7 +144,7 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": [],
+      "value": ["2014", "2015", "2016"],
       "type": "array"
     },
     "latest_year": {
@@ -123,11 +165,134 @@
         "Percent": "%"
       }
     },
-    "default": {}
+    "expected_number_of_geographies": {
+		  "ckan_name": "Expected Number of Unique Geographies",
+		  "value": 170,
+		  "type": "string"
+		},  
+    "default": {      
+      "ckan_name": "Default",
+			"value": {
+			  "Town": "Connecticut", 
+		 		"Year": ["2014", "2015", "2016"],
+		 		"Substance": "Total",
+				"Measure Type": "Number",
+		 		"Variable": "Treatment Admissions"
+			},
+		  	"type": "object"
+    }  
   },
-  "spot_checks": [],
+  "spot_checks": [
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Beacon Falls",
+        "Year": "2013",
+        "Month": "January",
+        "Variable": "Treatment Admissions",
+        "Measure Type": "Number", 
+        "Substance": "Heroin"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 0
+      } 
+    },
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Bloomfield",
+        "Year": "2016",
+        "Month": "December",
+        "Variable": "Treatment Admissions",
+        "Measure Type": "Number", 
+        "Substance": "Alcohol"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 0
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Hartford",
+        "Year": "2015",
+        "Month": "July",
+        "Variable": "Treatment Admissions",
+        "Measure Type": "Number", 
+        "Substance": "Tranquilizers"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": -9999
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Plymouth",
+        "Year": "2014",
+        "Month": "March",
+        "Variable": "Treatment Admissions",
+        "Measure Type": "Number", 
+        "Substance": "Hallucinogens: LSD, DMS, STP, etc"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": -6666
+      } 
+    },
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Danbury",
+        "Year": "2014",
+        "Month": "September",
+        "Variable": "Treatment Admissions",
+        "Measure Type": "Number", 
+        "Substance": "Total"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 150
+      } 
+    }
+  ],
   "dimension_groups": [
-    {"Measure Type": []},
-    {"Variable": []}
+    {
+      "Measure Type": [
+        "Number"
+		  ],
+      "Substance": [              
+        "Alcohol",
+        "Amphetamines",
+        "Barbiturates",
+        "Benzodiazepines",
+        "Cocaine",
+        "Cocaine/Crack",
+        "Crack",
+        "Hallucinogens: LSD, DMS, STP, etc",
+        "Heroin",
+        "Inhalants",
+        "Marijuana, Hashish, THC",
+        "Methamphetamines",
+        "Non-Prescriptive Methadone",
+        "Other",
+        "Other Opiates and Synthetics",
+        "Other Sedatives or Hypnotics",
+        "Other Stimulants",
+        "Over-the-Counter",
+        "PCP",
+        "Tobacco",
+        "Tranquilizers", 
+        "Total"
+      ]
+    }
   ]
 }
