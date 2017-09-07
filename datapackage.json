@@ -21,7 +21,7 @@
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/data.csv",
+    "path": "data/substance-treatment_admissions_by_drug_type_2013-2016.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -72,9 +72,7 @@
           "dimension": true,
           "constraints": {
 			      "enum": [
-		          "Number",
-		          "Rate", 	
-		          "Percent"
+		          "Number"
 		        ]
 			    }
         }, {
@@ -144,7 +142,7 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": ["2014", "2015", "2016"],
+      "value": ["2013", "2014", "2015", "2016"],
       "type": "array"
     },
     "latest_year": {
@@ -244,7 +242,7 @@
       "expected": {
         "type": "$match",
         "number type": "int",
-        "value": -6666
+        "value": 0
       } 
     },
     {
