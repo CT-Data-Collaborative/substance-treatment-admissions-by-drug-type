@@ -139,7 +139,7 @@
       "value": "https://data.ct.gov/Health-and-Human-Services/Admissions-to-DMHAS-Addiction-Treatment-by-Town-Ye/erbt-mpgb",
       "type": "string"
     }, 
-    "0socrata_dataset_name": {
+    "socrata_dataset_name": {
       "ckan_name": "Socrata Dataset Name",
       "value": "Admissions to DMHAS Addiction Treatment by Town, Year, Month, and Primary Drug",
       "type": "string"
