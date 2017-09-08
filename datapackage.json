@@ -41,7 +41,7 @@
           "type": "string",
           "dimension": true,
           "constraints": {
-			      "enum": [          
+            "enum": [          
               "January", 
               "February", 
               "March", 
@@ -54,14 +54,14 @@
               "October", 
               "November", 
               "December"
-		        ]
-			    }
+            ]
+          }
         }, {
           "name": "Substance",
           "type": "string",
           "dimension": true,
           "constraints": {
-			      "enum": [
+            "enum": [
               "Alcohol",
               "Amphetamines",
               "Barbiturates",
@@ -84,26 +84,26 @@
               "Tobacco",
               "Tranquilizers", 
               "Total"
-		        ]
-			    }
+            ]
+          }
         }, {
           "name": "Measure Type",
           "type": "string",
           "dimension": true,
           "constraints": {
-			      "enum": [
-		          "Number"
-		        ]
-			    }
+            "enum": [
+              "Number"
+            ]
+          }
         }, {
           "name": "Variable",
           "type": "string",
           "dimension": true, 
           "constraints": {
-		        "enum": [
+            "enum": [
               "Treatment Admissions"
             ]
-			    }
+          }
         }, {
           "name": "Value",
           "type": "number",
@@ -138,7 +138,12 @@
       "ckan_name": "Socrata Dataset URL",
       "value": "https://data.ct.gov/Health-and-Human-Services/Admissions-to-DMHAS-Addiction-Treatment-by-Town-Ye/erbt-mpgb",
       "type": "string"
-    },
+    }, 
+    "socrata_dataset_name": {
+      "ckan_name": "Socrata Dataset Name",
+      "value": "Admissions to DMHAS Addiction Treatment by Town, Year, Month, and Primary Drug",
+      "type": "string"
+    }, 
     "domain": {
       "ckan_name": "Domain",
       "value": "Health",
@@ -184,20 +189,20 @@
       }
     },
     "expected_number_of_geographies": {
-		  "ckan_name": "Expected Number of Unique Geographies",
-		  "value": 170,
-		  "type": "string"
-		},  
+      "ckan_name": "Expected Number of Unique Geographies",
+      "value": 170,
+      "type": "string"
+    },  
     "default": {      
       "ckan_name": "Default",
-			"value": {
-			  "Town": "Connecticut", 
-		 		"Year": ["2013", "2014", "2015", "2016"],
-		 		"Substance": "Total",
-				"Measure Type": "Number",
-		 		"Variable": "Treatment Admissions"
-			},
-		  	"type": "object"
+      "value": {
+        "Town": "Connecticut", 
+        "Year": ["2013", "2014", "2015", "2016"],
+        "Substance": "Total",
+        "Measure Type": "Number",
+        "Variable": "Treatment Admissions"
+      },
+      "type": "object"
     }  
   },
   "spot_checks": [
@@ -286,7 +291,7 @@
     {
       "Measure Type": [
         "Number"
-		  ],
+      ],
       "Month": [
         "January", 
         "February", 
@@ -300,7 +305,7 @@
         "October", 
         "November", 
         "December"
-		  ],
+      ],
       "Substance": [              
         "Alcohol",
         "Amphetamines",
