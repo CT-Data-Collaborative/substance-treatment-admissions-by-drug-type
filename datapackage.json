@@ -2,7 +2,7 @@
   "name": "substance-treatment-admissions-by-drug-type",
   "datapackage_version": "1.0-beta.18",
   "title": "Substance Treatment Admissions by Drug Type",
-  "description": "Substance Treatment Admissions reports the number, rate, and percentage of admissions for substance use and abuse, per substance.",
+  "description": "Substance Treatment Admissions by Drug Type reports the monthly admission counts by primary drug of choice as reported to the Connecticut Department of Mental Health and Addiction Services.",
   "version": "1.0",
   "licenses": [{
     "url": "http://opendatacommons.org/licenses/pddl/",
@@ -36,6 +36,26 @@
           "name": "Year",
           "type": "string",
           "dimension": false
+        }, {
+          "name": "Month",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+			      "enum": [          
+              "January", 
+              "February", 
+              "March", 
+              "April", 
+              "May", 
+              "June", 
+              "July", 
+              "August", 
+              "September", 
+              "October", 
+              "November", 
+              "December"
+		        ]
+			    }
         }, {
           "name": "Substance",
           "type": "string",
@@ -92,16 +112,16 @@
       }
     }
   ],
-  "last_modified": "09/06/2017",
+  "last_modified": "09/08/2017",
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
-      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. The non-duplicative number of alcohol addiction treatment clients and marijuana addiction treatment clients are also reported. Data are reported annually.",
+      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. Data does not include privately funded addiction treatment, such as that received through private physicians. All data is for residents 18 and older, self-reported by the client, by town of the client’s last reported residence. Data are reported annually.",
       "type": "string"
     },
     "suppression": {
       "ckan_name": "Suppression",
-      "value": "Towns with less than 6 admissions are suppressed.",
+      "value": "Towns with less than 6 monthly admissions are suppressed and replaced with an asterisk (*).",
       "type": "string"
     },
     "technical_notes": {
@@ -172,7 +192,7 @@
       "ckan_name": "Default",
 			"value": {
 			  "Town": "Connecticut", 
-		 		"Year": ["2014", "2015", "2016"],
+		 		"Year": ["2013", "2014", "2015", "2016"],
 		 		"Substance": "Total",
 				"Measure Type": "Number",
 		 		"Variable": "Treatment Admissions"
@@ -266,6 +286,20 @@
     {
       "Measure Type": [
         "Number"
+		  ],
+      "Month": [
+        "January", 
+        "February", 
+        "March", 
+        "April", 
+        "May", 
+        "June", 
+        "July", 
+        "August", 
+        "September", 
+        "October", 
+        "November", 
+        "December"
 		  ],
       "Substance": [              
         "Alcohol",
