@@ -116,7 +116,7 @@
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
-      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. Data does not include privately funded addiction treatment, such as that received through private physicians. All data is for residents 18 and older, self-reported by the client, by town of the client’s last reported residence. Data are reported annually.",
+      "value": "The data report admissions to public and private substance abuse treatment programs receiving public funding for various substance abuses. Data does not include privately funded addiction treatment, such as that received through private physicians. All data is for residents 18 and older, self-reported by the client, by town of the client’s last reported residence. Data are reported annually. This data set reports the monthly admission counts by primary drug of choice as reported to the Connecticut Department of Mental Health and Addiction Services. The annual data from 2006-2009 that was listed previously has been archived.",
       "type": "string"
     },
     "suppression": {
